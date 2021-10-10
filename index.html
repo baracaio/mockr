@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Gráfico</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+<nav class="navbar is-danger" role="navigation" aria-label="main navigation" id="controls">
+    <div id="navbar-controller" class="navbar-menu">
+        <div id="paint-mode">
+            <div class="navbar-start">
+                <span class="navbar-item">
+                    <div class="field">
+                        <label class="label">Espessura</label>
+                        <div class="control">
+                            <input class="input" type="number" min="1" max="30" placeholder="Espessura">
+                        </div>
+                    </div>
+                </span>
+
+                <span class="navbar-item">
+                    <div class="field">
+                        <label class="label">Forma</label>
+                        <div class="select">
+                            <select name="forma" id="select-shape">
+                                <option value="dot" selected>Ponto</option>
+                                <option value="line">Linha</option>
+                                <option value="triangle">Círuclo</option>
+                                <option value="circle">Círculo</option>
+                                <option value="polygon">Polígono</option>
+                            </select>
+                        </div>
+                    </div>
+                </span>
+
+                <span class="navbar-item">
+                        <div class="field">
+                            <lavel class="label">Cor</lavel>
+                            <div class="control">
+                                <input type="color" class="input">
+                            </div>
+                        </div>
+                    </span>
+            </div>
+        </div>
+
+        <div id="fractal-mode" class="hidden">
+            <div class="navbar-start">
+                <span class="navbar-item">
+                    <div class="field">
+                        <label class="label">Fractal</label>
+                        <div class="select">
+                            <select name="forma" id="select-fractal">
+                                <option value="lerp" selected>Lerp</option>
+                            </select>
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </div>
+
+        <div id="transformer-mode" class="hidden">
+            <div class="navbar-start">
+                <span class="navbar-item">
+                    <div class="field">
+                        <label class="label">Transformação</label>
+                        <div class="select">
+                            <select name="forma" id="select-transformer">
+                                <option value="rotation" selected>Rotação</option>
+                            </select>
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </div>
+
+        <div class="navbar-end">
+            <span class="navbar-item">
+                <div class="field">
+                    <label class="label">Modo</label>
+                    <div class="select">
+                        <select name="mode" id="select-mode">
+                            <option value="paint-mode" selected>Desenho</option>
+                            <option value="fractal-mode">Fractal</option>
+                            <option value="transformer-mode">Trasformações</option>
+                        </select>
+                    </div>
+                </div>
+            </span>
+        </div>
+    </div>
+</nav>
+
+<canvas id="canvas"></canvas>
+<script src="script/main.js" type="module"></script>
+</body>
+</html>
