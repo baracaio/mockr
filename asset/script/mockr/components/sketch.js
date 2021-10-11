@@ -1,38 +1,34 @@
+let canvas = null;
+let context = null;
+let color = '#000';
+let width = 1.5;
+let height = 1.5;
+
 export const sketch = {
-    canvas: null,
-
-    context: null,
-
-    color: '#000',
-
-    width: 1.5,
-
-    height: 1.5,
-
     setup: (canvasId, contextWrapper) => {
-        this.canvas = document.querySelector(canvasId);
-        this.context = this.canvas.getContext(contextWrapper);
+        canvas = document.querySelector(canvasId);
+        context = canvas.getContext(contextWrapper);
     },
 
     /**
      * Clear drawings on canvas
      */
     cleanUp: () => {
-        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        context.clearRect(0, 0, canvas.width, canvas.height);
     },
 
     /**
      * Resize canvas size to fit screen
      *
-     * @param canvasId
-     * @param offset
+     * @param offsetH
+     * @param offsetW
      */
-    fitCanvasToScreen: (canvasId, offset) => {
-        let canvas = document.querySelector(canvasId);
-        if (!offset) offset = 0;
+    fitCanvasToScreen: (offsetH, offsetW) => {
+        if (!offsetH) offsetH = 0;
+        if (!offsetW) offsetW = 0;
 
-        canvas.height = document.innerHeight - offset;
-        canvas.width = document.innerWidth;
+        canvas.height = window.innerHeight - offsetH;
+        canvas.width = window.innerWidth - offsetW;
     },
 
     /**
@@ -41,7 +37,7 @@ export const sketch = {
      * @param newColor
      */
     setColor: (newColor) => {
-        this.color = newColor;
+        color = newColor;
     },
 
     /**
@@ -58,8 +54,8 @@ export const sketch = {
      * @param coordinate
      */
     dot: (coordinate) => {
-        this.context.fillStyle = this.color;
-        this.context.fillRect(coordinate.x, coordinate.y, this.width, this.height)
+        context.fillStyle = color;
+        context.fillRect(coordinate.x, coordinate.y, width, height)
     },
 
     /**

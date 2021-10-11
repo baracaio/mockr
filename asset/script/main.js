@@ -1,9 +1,15 @@
-import {mockr} from "./mockr/mockr";
+import {mockr} from "./mockr/mockr.js";
 
-const mode = document.querySelector('#select-mode')
-mode.addEventListener('change', setMode)
+window.addEventListener('load', setup)
+window.addEventListener('resize', resize)
 
-
+function setup() {
+    mockr.startUp('#canvas', '2d')
+    resize()
+}
+function resize() {
+    mockr.fitCanvas('#controls')
+}
 function setMode(e) {
     let paintMode = document.querySelector('#paint-mode')
     let fractalMode = document.querySelector('#fractal-mode')
@@ -30,3 +36,6 @@ function setMode(e) {
 
     mockr.cleanUp()
 }
+
+const mode = document.querySelector('#select-mode')
+mode.addEventListener('change', setMode)

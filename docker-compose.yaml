@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  nginx.mockr.dev:
+    container_name: nginx.mockr.dev
+    build:
+      context: .
+      dockerfile: build/nginx/Dockerfile
+    volumes:
+      - .:/app:rw
+    ports:
+      - "8080:80"
+
+networks:
+  baracaio:
+    external: true
